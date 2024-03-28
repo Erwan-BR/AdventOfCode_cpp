@@ -1,6 +1,9 @@
 #ifndef _AdventOfCode_
 #define _AdventOfCode_
 
+#include <vector>
+
+#include "Year2022.hpp"
 #include "UnavailableDateException.hpp"
 
 class AdventOfCode

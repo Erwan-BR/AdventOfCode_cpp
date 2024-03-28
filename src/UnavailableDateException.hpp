@@ -10,7 +10,9 @@ class UnavailableDateExeption : public std::exception
 public:
     const char* what() const throw()
     {
-        return "Currently, there is no answer available. Check the latest version of develop, or branchs corresponding to the issues.\n";
+
+        return "The answer has not been coded for this date. Try the following dates:\n\
+Year 2022: day 1 to 4.\n";
     }
 };
 
