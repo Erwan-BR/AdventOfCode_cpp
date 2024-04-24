@@ -9,7 +9,7 @@ void AdventOfCode::displayAnswer(const unsigned short& year, const unsigned shor
     }
 
     // Check if date available
-    if ((2022 == year && (0 == day || 4 < day)) || (2021 == year && (11 != day)))
+    if ((2022 == year && (0 == day || 4 < day)) || (2021 == year && (11 != day && 1 != day)))
     {
         throw UnavailableDateExeption();
     }
@@ -26,7 +26,7 @@ void AdventOfCode::displayAnswer(const unsigned short& year, const unsigned shor
     using Year2021_Ptr = unsigned int (*)(const bool&);
     static const std::vector<Year2021_Ptr> y21_Sol = {
         nullptr,
-        nullptr,
+        &Year2021::getResult_1,
         nullptr,
         nullptr,
         nullptr,

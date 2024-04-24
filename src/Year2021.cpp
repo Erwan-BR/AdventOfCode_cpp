@@ -1,5 +1,55 @@
 #include "Year2021.hpp"
 
+unsigned int Year2021::getResult_1(const bool& isPartOne)
+{
+    // Instantiation of a fstream object which is a file.
+    std::fstream readingFile;
+
+    // Choose an input folder name and concatenate it to the name of the file.
+    const std::string inputFileToRead = AdventOfCode::getNameOfFile(2021, 1);
+
+    // Opening the file in reading mode.
+    readingFile.open(inputFileToRead, std::ios::in);
+
+    if (!readingFile.is_open())
+    {
+        AdventOfCode::displayErrorOpeningFile(readingFile, inputFileToRead);
+        return -1;
+    }
+
+    // Instantiation of a string that will represent the line in the document.
+    std::string lineFromInputText;
+
+    // Declaration of the variables for this exercise
+    std::vector<int> depths;
+
+    // Retrieve lines into lineFromInputText to construct the matrix.
+    while(getline(readingFile, lineFromInputText))
+    {
+        depths.push_back(stoi(lineFromInputText));
+    }
+
+    if (isPartOne)
+    {
+        unsigned int numberOfIncreasingValues = 0U;
+
+        for (size_t index = 1; depths.size() > index; ++index)
+        {
+            if (depths[index] > depths[index - 1])
+            {
+                ++ numberOfIncreasingValues;
+            }
+        }
+
+        return numberOfIncreasingValues;
+    }
+    else
+    {
+    }
+
+    return 0;
+}
+
 /// @brief This was one of my interview question, for an application at Odoo in 2024 for an end-of-study internship. 
 unsigned int Year2021::getResult_11(const bool& isPartOne)
 {
@@ -59,8 +109,6 @@ unsigned int Year2021::getResult_11(const bool& isPartOne)
 
         return firstTimeAllFlash;
     }
-
-    return 0;
 }
 
 unsigned int Year2021::incrementByOne_11(matrixII& octopus)

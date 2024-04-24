@@ -12,7 +12,7 @@ public:
     {
 
         return "The answer has not been coded for this date. Try the following dates:\n\
-Year 2022: day 1 to 4.\nYear 2021: day 11.\n";
+Year 2022: day 1 to 4.\nYear 2021: day 1, 11.\n";
     }
 };
 

@@ -17,6 +17,7 @@ private:
 
 
 public:
+    static unsigned int getResult_1(const bool& isPartOne);
     static unsigned int getResult_11(const bool& isPartOne);
 };
 
