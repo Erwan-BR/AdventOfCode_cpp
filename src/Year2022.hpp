@@ -12,6 +12,7 @@
 #include <unordered_map>
 
 #include "UnavailableDateException.hpp"
+#include "AdventOfCode.hpp"
 
 typedef std::priority_queue<unsigned int, std::vector<unsigned int>, std::greater<unsigned int>> priorityQueue_1_2;
 

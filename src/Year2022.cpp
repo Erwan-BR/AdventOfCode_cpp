@@ -6,14 +6,14 @@ unsigned int Year2022::getResult_1(const bool& isPartOne)
     std::fstream readingFile;
 
     // Choose an input folder name and concatenate it to the name of the file.
-    const std::string inputFileToRead = getNameOfFile(1);
+    const std::string inputFileToRead = AdventOfCode::getNameOfFile(2022, 1);
 
     // Opening the file in reading mode.
     readingFile.open(inputFileToRead, std::ios::in);
 
     if (!readingFile.is_open())
     {
-        displayErrorOpeningFile(readingFile, inputFileToRead);
+        AdventOfCode::displayErrorOpeningFile(readingFile, inputFileToRead);
         return -1;
     }
 
@@ -109,14 +109,14 @@ unsigned int Year2022::getResult_2(const bool& isPartOne)
     std::fstream readingFile;
 
     // Get the name of the file to read
-    const std::string inputFileToRead = getNameOfFile(2);
+    const std::string inputFileToRead = AdventOfCode::getNameOfFile(2022, 2);
 
     // Opening the file in reading mode.
     readingFile.open(inputFileToRead, std::ios::in);
 
     if (!readingFile.is_open())
     {
-        displayErrorOpeningFile(readingFile, inputFileToRead);
+        AdventOfCode::displayErrorOpeningFile(readingFile, inputFileToRead);
         return -1;
     }
 
@@ -278,14 +278,14 @@ unsigned int Year2022::getResult_3(const bool& isPartOne)
     std::fstream readingFile;
 
     // Get the name of the file to read
-    const std::string inputFileToRead = getNameOfFile(3);
+    const std::string inputFileToRead = AdventOfCode::getNameOfFile(2022, 3);
 
     // Opening the file in reading mode.
     readingFile.open(inputFileToRead, std::ios::in);
 
     if (!readingFile.is_open())
     {
-        displayErrorOpeningFile(readingFile, inputFileToRead);
+        AdventOfCode::displayErrorOpeningFile(readingFile, inputFileToRead);
         return -1;
     }
 
@@ -402,14 +402,14 @@ unsigned int Year2022::getResult_4(const bool& isPartOne)
     std::fstream readingFile;
 
     // Get the name of the file to read
-    const std::string inputFileToRead = getNameOfFile(4);
+    const std::string inputFileToRead = AdventOfCode::getNameOfFile(2022, 4);
 
     // Opening the file in reading mode.
     readingFile.open(inputFileToRead, std::ios::in);
 
     if (!readingFile.is_open())
     {
-        displayErrorOpeningFile(readingFile, inputFileToRead);
+        AdventOfCode::displayErrorOpeningFile(readingFile, inputFileToRead);
         return -1;
     }
 
@@ -475,26 +475,4 @@ unsigned int Year2022::getOverlappingTime_4_1(const int& start1, const int& star
 unsigned int Year2022::getOverlappingTime_4_2(const int& start1, const int& start2, const int& end1, const int& end2)
 {
     return ((start1 <= end2 && end1 >= start2) || (start1 >= end2 && end1 <= start2)) ? 1 : 0;
-}
-
-/// @brief Display to the user an error if an error occured when the file was opened.
-/// @param streamError Stream where the error occured.
-/// @param nameOfFile Name of the file that has not been opened.
-void Year2022::displayErrorOpeningFile(const std::fstream& streamError, const std::string& nameOfFile)
-{
-    std::cerr << "Error opening file: " << nameOfFile << std::endl;
-    std::cerr << "Stream state: " << streamError.rdstate() << std::endl;
-}
-
-/// @brief Get the name of the file, according to the number of the exercise.
-/// @param numberOfExercise Number of the exercise (day of the challenge in fact)
-/// @return Name of the file to open to get the input of the challenge.
-std::string Year2022::getNameOfFile(const int& numberOfExercise)
-{
-    // Choose an input folder name and concatenate it to the name of the file.
-    const std::string inputFolderName = "src/textFiles/";
-    const std::string inputFileName = std::to_string(2022) + "_" + std::to_string(numberOfExercise) + ".txt";
-    const std::string inputFileToRead = inputFolderName + inputFileName;
-
-    return inputFileToRead;
 }
