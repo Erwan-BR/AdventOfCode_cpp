@@ -29,10 +29,10 @@ unsigned int Year2021::getResult_1(const bool& isPartOne)
         depths.push_back(stoi(lineFromInputText));
     }
 
+    unsigned int numberOfIncreasingValues = 0U;
+
     if (isPartOne)
     {
-        unsigned int numberOfIncreasingValues = 0U;
-
         for (size_t index = 1; depths.size() > index; ++index)
         {
             if (depths[index] > depths[index - 1])
@@ -40,14 +40,18 @@ unsigned int Year2021::getResult_1(const bool& isPartOne)
                 ++ numberOfIncreasingValues;
             }
         }
-
-        return numberOfIncreasingValues;
     }
     else
     {
+        for (size_t index = 3; depths.size() > index; ++index)
+        {
+            if (depths[index] > depths[index - 3])
+            {
+                ++ numberOfIncreasingValues;
+            }
+        }
     }
-
-    return 0;
+    return numberOfIncreasingValues;
 }
 
 /// @brief This was one of my interview question, for an application at Odoo in 2024 for an end-of-study internship. 
