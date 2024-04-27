@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <cmath>
 
 #include "UnavailableDateException.hpp"
 #include "AdventOfCode.hpp"
@@ -19,6 +20,7 @@ private:
 public:
     static unsigned int getResult_1(const bool& isPartOne);
     static unsigned int getResult_2(const bool& isPartOne);
+    static unsigned int getResult_3(const bool& isPartOne);
     static unsigned int getResult_11(const bool& isPartOne);
 };
 

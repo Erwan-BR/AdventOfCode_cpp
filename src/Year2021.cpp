@@ -22,14 +22,13 @@ unsigned int Year2021::getResult_1(const bool& isPartOne)
 
     // Declaration of the variables for this exercise
     std::vector<int> depths;
+    unsigned int numberOfIncreasingValues = 0U;
 
     // Retrieve lines into lineFromInputText to construct the matrix.
     while(getline(readingFile, lineFromInputText))
     {
         depths.push_back(stoi(lineFromInputText));
     }
-
-    unsigned int numberOfIncreasingValues = 0U;
 
     if (isPartOne)
     {
@@ -74,6 +73,7 @@ unsigned int Year2021::getResult_2(const bool& isPartOne)
     // Instantiation of a string that will represent the line in the document.
     std::string lineFromInputText;
 
+    // Declaration of the variables for this exercise
     unsigned int depth = 0U;
     unsigned int front = 0U;
 
@@ -119,6 +119,63 @@ unsigned int Year2021::getResult_2(const bool& isPartOne)
         }
     }
     return front * depth;
+}
+
+unsigned int Year2021::getResult_3(const bool& isPartOne)
+{
+    // Instantiation of a fstream object which is a file.
+    std::fstream readingFile;
+
+    // Choose an input folder name and concatenate it to the name of the file.
+    const std::string inputFileToRead = AdventOfCode::getNameOfFile(2021, 3);
+
+    // Opening the file in reading mode.
+    readingFile.open(inputFileToRead, std::ios::in);
+
+    if (!readingFile.is_open())
+    {
+        AdventOfCode::displayErrorOpeningFile(readingFile, inputFileToRead);
+        return -1;
+    }
+
+    // Instantiation of a string that will represent the line in the document.
+    std::string lineFromInputText;
+
+    // Declaration of the variables for this exercise
+    #define NB_BITS 12
+
+    std::vector<unsigned int> frequenciesOfOne(NB_BITS);
+    unsigned int numberOfLines = 0U;
+    unsigned int gammaRate = 0U;
+    unsigned int epsilonRate = 0U;
+
+    if (isPartOne)
+    {
+        while (getline(readingFile, lineFromInputText))
+        {
+            for (size_t index = 0; NB_BITS > index; ++index)
+            {
+                frequenciesOfOne[index] += static_cast<unsigned int> (lineFromInputText[index] - '0');
+            }
+            ++numberOfLines;
+        }
+
+        for (size_t index = 0; NB_BITS > index; ++index)
+        {
+            if (frequenciesOfOne[index] > (numberOfLines / 2))
+            {
+                gammaRate += pow(2, (NB_BITS - index - 1));
+            }
+            else
+            {
+                epsilonRate += pow(2, (NB_BITS - index - 1));
+            }
+        }
+    }
+    else
+    {
+    }
+    return gammaRate * epsilonRate;
 }
 
 /// @brief This was one of my interview question, for an application at Odoo in 2024 for an end-of-study internship. 

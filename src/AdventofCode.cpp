@@ -9,7 +9,7 @@ void AdventOfCode::displayAnswer(const unsigned short& year, const unsigned shor
     }
 
     // Check if date available
-    if ((2022 == year && (0 == day || 4 < day)) || (2021 == year && (11 != day && 1 != day && 2 != day)))
+    if ((2022 == year && (0 == day || 4 < day)) || (2021 == year && (11 != day && (0 == day || 3 < day))))
     {
         throw UnavailableDateExeption();
     }
@@ -28,7 +28,7 @@ void AdventOfCode::displayAnswer(const unsigned short& year, const unsigned shor
         nullptr,
         &Year2021::getResult_1,
         &Year2021::getResult_2,
-        nullptr,
+        &Year2021::getResult_3,
         nullptr,
         nullptr,
         nullptr,
