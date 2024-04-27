@@ -54,6 +54,73 @@ unsigned int Year2021::getResult_1(const bool& isPartOne)
     return numberOfIncreasingValues;
 }
 
+unsigned int Year2021::getResult_2(const bool& isPartOne)
+{
+    // Instantiation of a fstream object which is a file.
+    std::fstream readingFile;
+
+    // Choose an input folder name and concatenate it to the name of the file.
+    const std::string inputFileToRead = AdventOfCode::getNameOfFile(2021, 2);
+
+    // Opening the file in reading mode.
+    readingFile.open(inputFileToRead, std::ios::in);
+
+    if (!readingFile.is_open())
+    {
+        AdventOfCode::displayErrorOpeningFile(readingFile, inputFileToRead);
+        return -1;
+    }
+
+    // Instantiation of a string that will represent the line in the document.
+    std::string lineFromInputText;
+
+    unsigned int depth = 0U;
+    unsigned int front = 0U;
+
+    if (isPartOne)
+    {
+        // Retrieve lines into lineFromInputText to compute depth and horizontal move
+        while(getline(readingFile, lineFromInputText))
+        {
+            if ('f' == lineFromInputText.front())
+            {
+                front += static_cast<unsigned int> (lineFromInputText.back() - '0');
+            }
+            else if ('u' == lineFromInputText.front())
+            {
+                depth -= static_cast<unsigned int> (lineFromInputText.back() - '0');
+            }
+            else
+            {
+                depth += static_cast<unsigned int> (lineFromInputText.back() - '0');
+            }
+        }
+    }
+    else
+    {
+        unsigned int aim = 0U;
+
+        // Retrieve lines into lineFromInputText to compute depth and horizontal move
+        while(getline(readingFile, lineFromInputText))
+        {
+            if ('f' == lineFromInputText.front())
+            {
+                front += static_cast<unsigned int> (lineFromInputText.back() - '0');
+                depth += aim * static_cast<unsigned int> (lineFromInputText.back() - '0');
+            }
+            else if ('u' == lineFromInputText.front())
+            {
+                aim -= static_cast<unsigned int> (lineFromInputText.back() - '0');
+            }
+            else
+            {
+                aim += static_cast<unsigned int> (lineFromInputText.back() - '0');
+            }
+        }
+    }
+    return front * depth;
+}
+
 /// @brief This was one of my interview question, for an application at Odoo in 2024 for an end-of-study internship. 
 unsigned int Year2021::getResult_11(const bool& isPartOne)
 {

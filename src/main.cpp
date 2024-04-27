@@ -7,6 +7,9 @@ int main()
         AdventOfCode::displayAnswer(2021, 1, true);
         AdventOfCode::displayAnswer(2021, 1, false);
 
+        AdventOfCode::displayAnswer(2021, 2, true);
+        AdventOfCode::displayAnswer(2021, 2, false);
+
         AdventOfCode::displayAnswer(2021, 11, true);
         AdventOfCode::displayAnswer(2021, 11, false);
 
