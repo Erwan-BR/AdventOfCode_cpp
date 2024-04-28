@@ -175,7 +175,76 @@ unsigned int Year2021::getResult_3(const bool& isPartOne)
     else
     {
     }
+    #undef NB_BITS
+
     return gammaRate * epsilonRate;
+}
+
+unsigned int Year2021::getResult_7(const bool& isPartOne)
+{
+    // Instantiation of a fstream object which is a file.
+    std::fstream readingFile;
+
+    // Choose an input folder name and concatenate it to the name of the file.
+    const std::string inputFileToRead = AdventOfCode::getNameOfFile(2021, 7);
+
+    // Opening the file in reading mode.
+    readingFile.open(inputFileToRead, std::ios::in);
+
+    if (!readingFile.is_open())
+    {
+        AdventOfCode::displayErrorOpeningFile(readingFile, inputFileToRead);
+        return -1;
+    }
+
+    // Instantiation of a string that will represent the line in the document.
+    std::string lineFromInputText;
+
+    // Declaration of the variables for this exercise
+    std::vector<int> positionsOfCrabs;
+    std::regex integer_regex("\\d+");
+
+    while (getline(readingFile, lineFromInputText))
+    {
+        const auto words_begin = std::sregex_iterator(lineFromInputText.begin(), lineFromInputText.end(), integer_regex);
+        const auto words_end = std::sregex_iterator();
+
+        for (auto it = words_begin; words_end != it; ++it)
+        {
+            positionsOfCrabs.push_back(stoi(it->str()));
+        }
+    }
+    unsigned int fuelNecessary = 0U;
+
+    sort(positionsOfCrabs.begin(), positionsOfCrabs.end());
+
+    if (isPartOne)
+    {
+        int median;
+        if (positionsOfCrabs.size() % 2)
+        {
+            median = positionsOfCrabs[positionsOfCrabs.size() / 2];
+        }
+        else
+        {
+            median = (positionsOfCrabs[(positionsOfCrabs.size() / 2) - 1] + positionsOfCrabs[positionsOfCrabs.size() / 2]) / 2;
+        }
+        
+        for (const int& crabpos: positionsOfCrabs)
+        {
+            fuelNecessary += abs(crabpos - median);
+        }
+    }
+    else
+    {
+        int mean = (std::accumulate(positionsOfCrabs.begin(), positionsOfCrabs.end(), 0)) / positionsOfCrabs.size();
+        
+        for (const int& crabpos: positionsOfCrabs)
+        {
+            fuelNecessary += (abs(crabpos - mean) * (abs(crabpos - mean) + 1)) / 2;
+        }
+    }
+    return fuelNecessary;
 }
 
 /// @brief This was one of my interview question, for an application at Odoo in 2024 for an end-of-study internship. 

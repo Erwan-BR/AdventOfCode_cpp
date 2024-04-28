@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 #include <cmath>
+#include <regex>
+#include <numeric>
 
 #include "UnavailableDateException.hpp"
 #include "AdventOfCode.hpp"
@@ -16,11 +18,11 @@ private:
     static unsigned int incrementByOne_11(matrixII& octopus);
     static void makeFlash_11_1(matrixII& octopus, const int& row, const int& col);
 
-
 public:
     static unsigned int getResult_1(const bool& isPartOne);
     static unsigned int getResult_2(const bool& isPartOne);
     static unsigned int getResult_3(const bool& isPartOne);
+    static unsigned int getResult_7(const bool& isPartOne);
     static unsigned int getResult_11(const bool& isPartOne);
 };
 
