@@ -53,6 +53,7 @@
         "iomanip": "cpp",
         "cstring": "cpp",
         "cinttypes": "cpp",
-        "unordered_set": "cpp"
+        "unordered_set": "cpp",
+        "regex": "cpp"
     }
 }
